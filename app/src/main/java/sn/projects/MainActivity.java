@@ -1,6 +1,7 @@
 package sn.projects;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,12 +41,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mEmailField = findViewById(R.id.fieldEmail);
         mPasswordField = findViewById(R.id.fieldPassword);
 
+
         // Buttons
         findViewById(R.id.emailSignInButton).setOnClickListener(this);
         findViewById(R.id.emailCreateAccountButton).setOnClickListener(this);
         findViewById(R.id.signOutButton).setOnClickListener(this);
         findViewById(R.id.verifyEmailButton).setOnClickListener(this);
-
+        findViewById(R.id.nxt_btn).setOnClickListener(this);
     }
 
     @Override
@@ -223,6 +225,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             signOut();
         } else if (i == R.id.verifyEmailButton) {
             sendEmailVerification();
+        } else if (i == R.id.nxt_btn){
+            go2next();
         }
     }
 
@@ -241,6 +245,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
+    }
+    public void go2next(){
+        Intent go = new Intent(this, SecondActivity.class);
+        //go.putExtra("UID",)
+        startActivity(go);
     }
 
 }
